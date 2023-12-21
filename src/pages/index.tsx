@@ -5,7 +5,8 @@ import { LinkComponent } from 'components/layout/LinkComponent'
 import { useState, useEffect } from 'react'
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi'
 import { ethers } from 'ethers'
-import { NFT_CONTRACT_ADDRESS, NFT_CONTRACT_ABI } from '../utils/nft'
+// import { NFT_CONTRACT_ADDRESS, NFT_CONTRACT_ABI } from '../utils/nft'
+import { TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI } from '../utils/token'
 import { useEthersSigner, useEthersProvider } from '../hooks/ethersAdapter'
 
 export default function Home() {
@@ -19,17 +20,20 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [txLink, setTxLink] = useState<string>()
   const [txHash, setTxHash] = useState<string>()
+  const [isError, setIsError] = useState<string>()
 
   useEffect(() => {
     const init = async () => {
-      if (chain?.id !== 10243) {
-        switchNetwork?.(10243)
+      if (chain?.id !== 10245) {
+        switchNetwork?.(10245)
       }
     }
     init()
     console.log('isConnected:', isConnected)
     console.log('network:', chain?.name)
     console.log('signer:', signer)
+    console.log('signer.address:', signer?.address)
+    console.log('token contract address:', TOKEN_CONTRACT_ADDRESS)
     console.log('provider:', provider)
   }, [signer])
 
@@ -50,16 +54,16 @@ export default function Home() {
       setIsLoading(true)
       setTxHash('')
       setTxLink('')
-      const nft = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_CONTRACT_ABI, signer)
-      const call = await nft.safeMint(signer.address)
+      const nft = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, signer)
+      const call = await nft.mint(ethers.parseEther('10000'))
       const receipt = await call.wait()
       console.log('tx:', receipt)
       setTxHash(receipt.hash)
-      setTxLink('https://explorer-test.arthera.net/tx/' + receipt.hash)
+      setTxLink('https://explorer-dev.arthera.net/tx/' + receipt.hash)
       setIsLoading(false)
       toast({
         title: 'Successful mint',
-        description: 'Congrats, your NFT was minted! 🎉',
+        description: 'Successful mint! 🎉',
         status: 'success',
         position: 'bottom',
         variant: 'subtle',
@@ -68,6 +72,7 @@ export default function Home() {
       })
     } catch (e) {
       setIsLoading(false)
+      setIsError('It seems like the wallet you just tested CANNOT interact with a balance of 0 AA.')
       console.log('error:', e)
       toast({
         title: 'Woops',
@@ -86,7 +91,7 @@ export default function Home() {
       <Head />
 
       <main>
-        <HeadingComponent as="h2">Hi there! 👋</HeadingComponent>
+        <HeadingComponent as="h2">Just click on the &quot;Mint&quot; button below:</HeadingComponent>
         <Button
           mt={4}
           colorScheme="blue"
@@ -99,8 +104,13 @@ export default function Home() {
           Mint
         </Button>
         {txHash && (
-          <Text py={4} fontSize="14px" color="#45a2f8">
-            <LinkComponent href={txLink ? txLink : ''}>{txHash}</LinkComponent>
+          <Text py={4} fontSize="16px" color="#45a2f8">
+            Test successful ✅ <LinkComponent href={txLink ? txLink : ''}>{txHash}</LinkComponent>
+          </Text>
+        )}
+        {isError && (
+          <Text py={4} fontSize="16px" color="#FF0000">
+            {isError}
           </Text>
         )}
       </main>

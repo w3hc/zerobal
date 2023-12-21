@@ -1,30 +1,15 @@
-# Arthera Next.js Boilerplate
+# Zerobal
 
-A variant of [Nexth](https://github.com/wslyvh/nexth/) boilerplate for hackathons and quick prototyping.
+Testing interactions between a token contract on Devnet and a wallet that has a balance of 0 AA.
 
-View the [live demo](https://arthera-nextjs-boilerplate.netlify.app).
+Live app: [zerobal.netlify.app](zerobal.netlify.app)
 
-## Features
-
-- [Next.js](https://nextjs.org/docs)
-- [Chakra UI](https://chakra-ui.com/)
-- [Ethers v6](https://docs.ethers.org/v6/)
-- [viem](https://viem.sh/)
-- [wagmi](https://wagmi.sh/)
-- [Web3Modal SDK from WalletConnect](https://docs.walletconnect.com/)
-- [Sign-In with Ethereum](https://www.login.xyz/)
-- [Gitcoin Passport](https://docs.passport.gitcoin.co/)
-- [usehooks-ts](https://usehooks-ts.com/)
-- [next-SEO](https://github.com/garmeeh/next-seo)
-- [TypeScript](https://www.typescriptlang.org/)
-- [eslint](https://eslint.org/)
-- [prettier](https://prettier.io/)
-- [Husky](https://typicode.github.io/husky/)
+Token contract (Devnet): [0x28548Dd2aB9FB31B87e859a9a3081Cda3bE5C6c6](https://explorer-dev.arthera.net/address/0x28548Dd2aB9FB31B87e859a9a3081Cda3bE5C6c6?tab=contact_code)
 
 ## Install
 
 ```bash
-pnpm install
+pnpm i
 ```
 
 ## Run
@@ -47,18 +32,6 @@ pnpm dev
 pnpm build
 ```
 
-## Arthera faucet
-
-You can get a handful of Testnet AA, the native currency of Arthera at [https://faucet.arthera.net/](https://faucet.arthera.net/).
-
-## Gitcoin passport
-
-If you want to use Gitcoin Passport, uncomment line 26 in the `components/layout/Header.tsx` file.
-
 ## Support
 
 You can contact me via [Element](https://matrix.to/#/@julienbrg:matrix.org), [Telegram](https://t.me/julienbrg), [Twitter](https://twitter.com/julienbrg), [Discord](https://discord.gg/uSxzJp3J76), or [LinkedIn](https://www.linkedin.com/in/julienberanger/).
-
-## Credits
-
-[Nexth](https://github.com/wslyvh/nexth/) boilerplate was built by [wslyvh](https://github.com/wslyvh) and [others](https://github.com/wslyvh/nexth/graphs/contributors).
