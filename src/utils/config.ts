@@ -3,7 +3,7 @@ import { Chain } from '@wagmi/core'
 
 export const SITE_NAME = 'Zerobal'
 export const SITE_DESCRIPTION = 'Testing all wallets.'
-export const SITE_URL = 'erobal.netlify.app'
+export const SITE_URL = 'zerobal.netlify.app'
 
 export const THEME_INITIAL_COLOR = 'system'
 export const THEME_COLOR_SCHEME: ThemingProps['colorScheme'] = 'gray'
