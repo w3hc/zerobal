@@ -33,7 +33,7 @@ export function HeadingComponent(props: Props) {
   }
 
   return (
-    <Heading as={props.as} size={size} className={className} mb={2}>
+    <Heading as={props.as} size={size} className={className} mb={2} mt={7}>
       {props.children}
     </Heading>
   )

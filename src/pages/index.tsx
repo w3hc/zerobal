@@ -91,7 +91,33 @@ export default function Home() {
       <Head />
 
       <main>
-        <HeadingComponent as="h2">Just click on the &quot;Mint&quot; button below:</HeadingComponent>
+        <HeadingComponent as="h4">1. Connect to a wallet</HeadingComponent>
+        <HeadingComponent as="h4">2. Add Arthera Devnet to this wallet:</HeadingComponent>
+        <Text mt={5} ml={8}>
+          <ul>
+            <li>
+              Network name: <strong>Arthera Devnet</strong>
+            </li>
+            <li>
+              RPC Endpoint URL: <strong>https://rpc-dev.arthera.net</strong>
+            </li>
+            <li>
+              Chain ID: <strong>10245</strong>
+            </li>
+            <li>
+              Currency symbol: <strong>AA</strong>
+            </li>
+            <li>
+              Block explorer URL: <strong>https://explorer-dev.arthera.net</strong>
+            </li>
+          </ul>
+        </Text>
+
+        <Text py={4} fontSize="16px" color="#45a2f8">
+          <LinkComponent href={'https://docs.arthera.net/validators/devnet#network-details'}>View the network details in our docs</LinkComponent>
+        </Text>
+        <HeadingComponent as="h4">3. Click on the &apos;mint&apos; button:</HeadingComponent>
+
         <Button
           mt={4}
           colorScheme="blue"
@@ -113,6 +139,7 @@ export default function Home() {
             {isError}
           </Text>
         )}
+        <HeadingComponent as="h4">4. Report the result</HeadingComponent>
       </main>
     </>
   )
