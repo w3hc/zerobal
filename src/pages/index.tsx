@@ -24,8 +24,8 @@ export default function Home() {
 
   useEffect(() => {
     const init = async () => {
-      if (chain?.id !== 10242) {
-        switchNetwork?.(10242)
+      if (chain?.id !== 10243) {
+        switchNetwork?.(10243)
       }
     }
     init()

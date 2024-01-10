@@ -14,26 +14,26 @@ export const THEME_CONFIG = {
 export const SOCIAL_TWITTER = 'artherachain'
 export const SOCIAL_GITHUB = 'w3hc/zerobal'
 
-export const artheraMainnet: Chain = {
-  id: 10242,
-  name: 'Arthera Mainnet',
-  network: 'artheraMainnet',
+export const artheraTestnet: Chain = {
+  id: 10243,
+  name: 'Arthera Testnet',
+  network: 'artheraTestnet',
   nativeCurrency: {
     decimals: 18,
     name: 'AA',
     symbol: 'AA',
   },
   rpcUrls: {
-    public: { http: ['https://rpc.arthera.net'] },
-    default: { http: ['https://rpc.arthera.net'] },
+    public: { http: ['https://rpc-test.arthera.net'] },
+    default: { http: ['https://rpc-test.arthera.net'] },
   },
   blockExplorers: {
-    etherscan: { name: 'Arthera Explorer', url: 'https://explorer.arthera.net' },
-    default: { name: 'Arthera Explorer', url: 'https://explorer.arthera.net' },
+    etherscan: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
+    default: { name: 'Arthera Testnet Explorer', url: 'https://explorer-test.arthera.net' },
   },
 } as const satisfies Chain
 
-export const ETH_CHAINS = [artheraMainnet]
+export const ETH_CHAINS = [artheraTestnet]
 
 export const SERVER_SESSION_SETTINGS = {
   cookieName: SITE_NAME,
