@@ -1,4 +1,4 @@
-import { Text, Button, useToast } from '@chakra-ui/react'
+import { Text, Button, useToast, ListItem, UnorderedList } from '@chakra-ui/react'
 import { Head } from 'components/layout/Head'
 import { HeadingComponent } from 'components/layout/HeadingComponent'
 import { LinkComponent } from 'components/layout/LinkComponent'
@@ -24,17 +24,17 @@ export default function Home() {
 
   useEffect(() => {
     const init = async () => {
-      if (chain?.id !== 10245) {
-        switchNetwork?.(10245)
+      if (chain?.id !== 10242) {
+        switchNetwork?.(10242)
       }
     }
     init()
-    console.log('isConnected:', isConnected)
-    console.log('network:', chain?.name)
-    console.log('signer:', signer)
-    console.log('signer.address:', signer?.address)
-    console.log('token contract address:', TOKEN_CONTRACT_ADDRESS)
-    console.log('provider:', provider)
+    // console.log('isConnected:', isConnected)
+    // console.log('network:', chain?.name)
+    // console.log('signer:', signer)
+    // console.log('signer.address:', signer?.address)
+    console.log('Contract address:', TOKEN_CONTRACT_ADDRESS)
+    // console.log('provider:', provider)
   }, [signer])
 
   const mint = async () => {
@@ -59,7 +59,7 @@ export default function Home() {
       const receipt = await call.wait()
       console.log('tx:', receipt)
       setTxHash(receipt.hash)
-      setTxLink('https://explorer-dev.arthera.net/tx/' + receipt.hash)
+      setTxLink('https://explorer.arthera.net/tx/' + receipt.hash)
       setIsLoading(false)
       toast({
         title: 'Successful mint',
@@ -92,29 +92,27 @@ export default function Home() {
 
       <main>
         <HeadingComponent as="h4">1. Connect to a wallet</HeadingComponent>
-        <HeadingComponent as="h4">2. Add Arthera Devnet to this wallet:</HeadingComponent>
-        <Text mt={5} ml={8}>
-          <ul>
-            <li>
-              Network name: <strong>Arthera Devnet</strong>
-            </li>
-            <li>
-              RPC Endpoint URL: <strong>https://rpc-dev.arthera.net</strong>
-            </li>
-            <li>
-              Chain ID: <strong>10245</strong>
-            </li>
-            <li>
-              Currency symbol: <strong>AA</strong>
-            </li>
-            <li>
-              Block explorer URL: <strong>https://explorer-dev.arthera.net</strong>
-            </li>
-          </ul>
-        </Text>
+        <HeadingComponent as="h4">2. Add Arthera Mainnet to this wallet:</HeadingComponent>
+        <UnorderedList mt={5} ml={8}>
+          <ListItem>
+            Network name: <strong>Arthera Mainnet</strong>
+          </ListItem>
+          <ListItem>
+            RPC Endpoint URL: <strong>https://rpc.arthera.net</strong>
+          </ListItem>
+          <ListItem>
+            Chain ID: <strong>10242</strong>
+          </ListItem>
+          <ListItem>
+            Currency symbol: <strong>AA</strong>
+          </ListItem>
+          <ListItem>
+            Block explorer URL: <strong>https://explorer.arthera.net</strong>
+          </ListItem>
+        </UnorderedList>
 
         <Text py={4} fontSize="16px" color="#45a2f8">
-          <LinkComponent href={'https://docs.arthera.net/validators/devnet#network-details'}>View the network details in our docs</LinkComponent>
+          <LinkComponent href={'https://docs.arthera.net/build/networks#arthera-mainnet'}>View the network details in our docs</LinkComponent>
         </Text>
         <HeadingComponent as="h4">3. Click on the &apos;mint&apos; button:</HeadingComponent>
 

@@ -1,4 +1,4 @@
 export function GetNetworkColor(chain?: string) {
-  if (chain === 'artheraDevnet') return 'blue'
+  if (chain === 'artheraMainnet') return 'purple'
   return 'grey'
 }
